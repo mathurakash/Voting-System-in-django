@@ -1,0 +1,80 @@
+{% extends "superuser/master.html"%}
+{%block title%} 
+{%if sub%}
+{{sub.name}}
+{% else %}
+  Homepage
+{% endif %}
+  {%endblock%}
+{%block body%}
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+
+
+
+</style>
+
+<div class="container my-5">
+    <h1><u>All Users Details </u></h1>
+    <a href="{% url 'superuser:add_user'%}" Class="btn btn-success" style="float:right;">Add User</a>
+  <div class="row my-5">
+    <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Pincode</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.phone}}</td>
+                <td>{{user.pincode}}</td>
+                <td><img src="{{user.image.url}}" height="150px" width="200px" alt="{{user.name}}"></td>
+                <td><a href="{%url 'superuser:voter_card' user.id%}" class="btn btn-danger">Delete user</a><br>
+                    {%if user.status == "Pending" %}
+                    <a href="{%url 'superuser:start_progress' user.id%}" class="btn btn-warning">Start Progress</a>
+                    {% elif user.status == "Progress" %}
+                    <a href="{%url 'superuser:approve_user' user.id%}" class="btn btn-success">Approved User</a>
+                    {% elif user.status == "Approved" %}
+                    <a href="{%url 'superuser:reset_user' user.id%}" class="btn btn-danger">Reset Status</a>
+                    
+                    {%endif%}
+                    
+                    
+                    <br><a href="{%url 'superuser:voter_card' user.id%}" class="btn btn-success">Show voter card</a></td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+    </table>
+  </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+
+</script>
+
+{%endblock%}

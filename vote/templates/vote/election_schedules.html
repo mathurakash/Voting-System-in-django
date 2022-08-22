@@ -1,0 +1,82 @@
+{% extends "vote/index.html"%}
+{%block title%} 
+{%if sub%}
+{{sub.name}}
+{% else %}
+  Election Schedules
+{% endif %}
+  {%endblock%}
+{%block body%}
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+
+
+
+</style>
+{% if votingstatus == "Disable"%}
+<h1 class="text-danger text-center mt-5">You already Voted Once</h1>
+<h3 class="text-danger text-center">Thanks for your contribution.....</h3>
+
+{%else%}
+<div class="container my-5">
+    <h1><u>Election Schedule For Your Area </u></h1>
+    
+  <div class="row my-5">
+    <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Pincode</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for schedule in schedule %}
+            {%if schedule.pincode == request.session.user_log.pincode%}
+            <tr style="background-color:yellow">
+                <td>{{schedule.pincode}}</td>
+                <td>{{schedule.date}}</td>
+                <td>{{schedule.startTime}}</td>
+                <td>{{schedule.endTime}}</td>
+                
+            </tr>
+            {%else%}
+            <tr style="background-color:red">
+                <td>{{schedule.pincode}}</td>
+                <td>{{schedule.date}}</td>
+                <td>{{schedule.startTime}}</td>
+                <td>{{schedule.endTime}}</td>
+                
+            </tr>
+            <!-- <h1 class="text-center"> No Election Schedule was announced for your Area............</h1> -->
+            {%endif%}
+            {% endfor %}
+            
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Pincode</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                
+            </tr>
+        </tfoot>
+    </table>
+  </div>
+</div>
+
+{%endif%}
+
+<script>
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+
+</script>
+
+{%endblock%}

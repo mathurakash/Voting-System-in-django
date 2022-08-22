@@ -1,0 +1,59 @@
+{% extends "vote/index.html" %}
+
+{%block title%} My - Dashboard {%endblock%}
+
+{%block body%}
+<style>
+  .btn-warning {
+    color: #000;
+    background-color: #ffc107;
+    border-color: #ffc107;
+    height: 65px;
+}
+</style>
+
+<div class="container">
+  
+  <h1 class="mt-5 border-bottom text-warning">My Dashboard<h1>
+      <div class="row my-5">
+        <div class="col-md-4 ocard">
+          <div class="col-md-4 icard">
+            <h3>Update Profile</h3>
+
+            <h1 class="mt-4">
+              <a class="btn btn-warning"  href="{%url 'vote:updateuser' request.session.user_log.id%}">Update Profile Section</a>
+            </h1>
+          </div>
+        </div>
+        <div class="col-md-4 ocard">
+          <div class="col-md-4 icard">
+            <h3>Download Voter Id Card</h3>
+            <h1 class="mt-4">
+              <a class="btn btn-warning" href="{%url 'vote:download_voter_card' request.session.user_log.id%}" >Download Voter card</a>
+            </h1>
+          </div>
+        </div>
+        <div class="col-md-4 ocard">
+          <div class="col-md-4 icard">
+            <h3>Vote Now</h3>
+            <h1 class="mt-4">
+              <a class="btn btn-warning" href="{%url 'vote:vote_now' request.session.user_log.pincode%}" >Vote Now</a>
+            </h1>
+          </div>
+        </div>
+
+      </div>
+     
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+{%endblock%}

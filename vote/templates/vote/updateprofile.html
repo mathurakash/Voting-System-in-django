@@ -1,0 +1,37 @@
+{% extends "vote/index.html" %}
+
+{%block title%} User Signup {%endblock%}
+
+{%block body%}
+
+<div class="main_div">
+    <div class="container my-5">
+        <div class="row">
+
+            <div class="col-md-7">
+                <h1 claSS="my-2"><u>Profile Section</u></h1>
+                <form method="POST" enctype="multipart/form-data" style="border:none;">
+                    <!-- csrf token -->
+                    {% csrf_token %}
+
+                    <table class="table ">
+                        {% if error %}
+                        {{error}}
+                        {% endif %}
+                        {{form.as_table}}
+                    </table>
+
+                    <!-- form submit button -->
+                    <button class="btn btn-warning" type="submit" value='Submit'>Update Profile</button>
+                </form>
+            </div>
+            <div class="col-md-5 ">
+                <!-- <img class="my-5 mx-2" height="400px" src="https://www.eces.eu/uploads/5ed90e76439b0.jpg"> -->
+                <img class="my-5 mx-2" height="400px" src="https://www.eces.eu/uploads/5ed90e76439b0.jpg">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{%endblock%}

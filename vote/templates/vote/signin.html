@@ -1,0 +1,30 @@
+{% extends "vote/index.html" %}
+
+    {%block title%} User Login {%endblock%}
+
+    {%block body%}
+
+    <div class="main_div">
+        <div class="container">
+            <div class="row my-5">
+                <div class="col-md-7 my-5">
+                    <h1><u>SignIn Form</u></h1>
+                    <form method="POST" enctype="multipart/form-data">
+                        <!-- csrf token -->
+                        {% csrf_token %}
+                        <table class="table ">
+                            {{form.as_table}}
+                        </table>
+                        <button class="btn btn-warning" type="submit" value='Submit' >Signin</button>
+                    </form>
+                </div>
+                <div class="col-md-5 ">
+                    <img class="my-5 mx-2" height="400px" src="https://www.eces.eu/uploads/5ed90e76439b0.jpg">
+                </div>
+            </div>
+        </div>
+
+
+</div>
+
+    {%endblock%}

@@ -1,0 +1,53 @@
+{% extends "superuser/master.html"%}
+{%block title%} 
+{%if sub%}
+{{sub.name}}
+{% else %}
+  Homepage
+{% endif %}
+  {%endblock%}
+{%block body%}
+<style>
+  .col-md-6{
+    background-color: darkblue;
+    padding: 50px;
+    border: 10px solid white;
+  }
+</style>
+
+<div class="container my-5">
+  <div class="row my-5">
+    <div class="col-md-6">
+      <h1 style="color: white;">Total Voters</h1>
+      <h3 style="color: white;">{{users}} </h3>
+      <a href="{% url 'superuser:add_user'%}" class="btn btn-warning" >Register Voter</a>
+    </div>
+    <div class="col-md-6">
+      <h1 style="color: white;">Total Candidates</h1>
+      <h3 style="color: white;">{{candidates}}</h3>
+      <a href="{% url 'superuser:add_candidate'%}" class="btn btn-warning" >Register Candidate</a>
+    </div>
+  </div>
+
+  <div class="row my-5">
+    <div class="col-md-6">
+      <h1 style="color: white;">Schedule Elctions</h1>
+      <a href="{% url 'superuser:add_election_schedules'%}" class="btn btn-warning" >Schedule Elections</a>
+    </div>
+    <div class="col-md-6">
+      <h1 style="color: white;">Upcomming Election</h1>
+      <table style="color:white;font-size: large; font-weight: bold;">
+        <tr>
+          <td>Pincode : </td>
+          <td>110081</td>
+        </tr>
+        <tr>
+          <td>Date : </td>
+          <td>11/11/2022</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+{%endblock%}

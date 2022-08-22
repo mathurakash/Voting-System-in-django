@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+    <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <title>{%block title%} {%endblock%}</title>
+
+
+    <style>
+      body {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+
+      .main_div {
+        width: 100%;
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+
+      }
+
+      .main_div h1 {
+        color: white;
+        background: transparent;
+        text-shadow: 0 2px 2px black;
+      }
+
+      .main_div form {
+        padding: 15px 20px;
+        background-color: deepskyblue;
+        color: white;
+        border: 2px solid #ecf0f1;
+        outline: none;
+        border-radius: 5px;
+        text-transform: uppercase;
+        cursor: pointer;
+        text-align: center;
+        box-shadow: 2px 2px 2px 2px black;
+      }
+
+      audio {
+        width: -webkit-fill-available;
+      }
+
+      .main_div input {
+        background-color: white;
+      }
+
+      .main_div table,
+      td,
+      th,
+      tr {
+        border: none;
+      }
+
+      .errorlist {
+        background-color: #ffc107
+      }
+
+
+      .cards {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        text-align: center;
+
+      }
+
+      .card:hover {
+        box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
+        transform: scale(1.05, 1.05);
+        border-radius: 25px;
+        background-color: #fff;
+        padding-bottom: 15px;
+
+      }
+
+      .card__img {
+        height: 354px;
+        width: 100%;
+      }
+
+      .button {
+        padding: 5px 8px;
+        cursor: pointer;
+      }
+
+      */ .footerdiv {
+        position: fixed;
+        padding: 10px 10px 0px 10px;
+        bottom: 0;
+      }
+
+
+
+     
+      /*SIgnin FORM STYLING*/
+
+
+
+
+
+      .btn-warning {
+      color: #000;
+      background-color: #ffc107;
+      border-color: black !important;
+  }
+
+  .btn-warning:hover {
+      color: #000;
+      background-color: #ffe481 !important;
+      border-color: black !important;
+  }
+
+  
+
+  select {
+    border: none;
+    padding: 5px;
+    box-shadow: 2px 2px 2px;
+    padding-left: 10px;
+    width: 265px;
+}
+
+
+    .search-btn{
+      border-radius:50px ;
+      border: none;
+      padding: 5px;
+      box-shadow: 2px 2px 2px ;
+    }
+    .search-btn:hover{
+      color:#fff ;
+      background-color: gray;
+      box-shadow: 2px 2px 2px;
+    }
+
+
+
+
+
+      footer {
+        padding: 10px 10px 0px 10px;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 40px;
+        background: #ffc107;
+        text-align: center;
+        color: black;
+        font-weight: bold;
+      }
+
+
+
+
+      .corona_rot img {
+      animation: gocorona 3s linear infinite;
+  }
+  @keyframes gocorona{
+    0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+  }
+
+  .leftside img{
+    animation: heartbeat 5s linear infinite;
+  }
+
+  @keyframes heartbeat{
+    0%{
+      transform: scale(.80);
+    }
+    20%{
+      transform: scale(1);
+    }
+    40%{
+      transform: scale(.80);
+    }
+    60%{
+      transform: scale(1);
+    }
+    80%{
+      transform: scale(.80);
+      }
+    100%{
+    transform: scale(.80);
+      }
+  }
+
+
+
+
+
+  .dropdown-submenu {
+    position: relative;
+  }
+
+  .dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+  }
+
+  #carouselImg{
+    height:500px;
+    width:100%;
+  }
+
+
+  #example_filter{
+    float:right !important;
+  }
+
+  @media only screen and(max-width: 480px) {
+    input {
+      border-radius: 60px;
+      border: none;
+      padding: 5px;
+      box-shadow: 2px 2px 2px;
+      padding-left: 10px;
+      width: 175px !important;
+  }
+  .main_div form {
+      padding: 15px 0px;
+      background-color: #ffc107;
+      color: white;
+      border: 2px solid #ecf0f1;
+      outline: none;
+      border-radius: 5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-align: center;
+      box-shadow: 2px 2px 2px 2px black;
+  }
+  #carouselImg{
+      height: 300px !important;
+    }
+
+    
+  }
+
+  @media only screen and(max-width: 480px) {
+    .subnavbar {
+      display: flex;
+  }
+  .subnavbarlist {
+    text-decoration:none;
+}
+    
+  }
+
+
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: darkblue;">
+        <div class="container-fluid">
+          <a class="navbar-brand text-white" href="{%url 'superuser:main'%}"><b>Election Commission of India</b></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+              {% if request.user.is_authenticated %}
+              
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{%url 'superuser:main'%}">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{%url 'superuser:show_all_users'%}">User Details</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{%url 'superuser:show_all_candidates'%}">candidate Details</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{%url 'superuser:election_schedules'%}">Schedule Elections</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{%url 'superuser:election_results'%}">Elections Results</a>
+                </li>
+                
+            </ul>
+            
+            <ul class="navbar-nav mb-2 mb-lg-0" style="list-style: none;">
+              
+              <li class="nav-item">
+                <button class="btn btn-primary mx-1" href="#">{{request.user.username}}</button>
+              </li> 
+              
+              <li class="nav-item">
+                <a class=" btn btn-danger" href="{% url 'superuser:logout' %}">logout</a>
+              </li> 
+            </ul>
+              
+              {%else%}
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              
+              
+            </ul>
+              
+               {%endif%}
+          </div>
+        </div>
+      </nav>
+      {%block body%} 
+
+      
+
+
+      {%endblock%}
+
+
+
+      <footer style="background-color: darkblue; color: white;">
+        <p>copyright © {% now "Y" %}</p>
+      </footer>
+  
+</body>
+
+</html>

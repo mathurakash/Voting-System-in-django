@@ -1,0 +1,35 @@
+{% extends "vote/index.html"%}
+{%block title%} 
+{%if sub%}
+{{sub.name}}
+{% else %}
+  Homepage
+{% endif %}
+  {%endblock%}
+{%block body%}
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+
+
+
+</style>
+
+<div class="container my-5">
+    <h1><u>Thanks For Your Vote</u></h1>
+    <h3 class="text-success">Results will be announced soon................</h3>
+   
+  
+  </div>
+</div>
+
+<!-- <script>
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+
+</script> -->
+
+{%endblock%}

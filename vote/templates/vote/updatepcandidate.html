@@ -1,0 +1,43 @@
+{% extends "vote/candidatedashboard.html" %}
+
+{%block title%} User Signup {%endblock%}
+
+{%block body%}
+
+<div class="main_div">
+    <div class="container my-5">
+        <div class="row">
+
+            <div class="col-md-7">
+                <h1 claSS="my-2"><u>Update Candidate Registration</u></h1>
+                <form method="POST" enctype="multipart/form-data" style="border:none;">
+                    <!-- csrf token -->
+                    {% csrf_token %}
+
+                    <table class="table ">
+                        {% if error %}
+                        {{error}}
+                        {% endif %}
+                        {{form.as_table}}
+                    </table>
+
+                    <!-- form submit button -->
+                    <button class="btn btn-warning" type="submit" value='Submit'>Update Registration profile</button>
+                </form>
+            </div>
+            <div class="col-md-5 ">
+                <div class="row">
+                    <h4><u>Candidate Image</u></h4>
+                    <img class="mx-2" height="200px" width="200 px" src="{{pi.image.url}}">
+                </div>
+                <div class="row my-4" >
+                    <h4><u>Party Logo</u></h4>
+                    <img class=" mx-2" height="200px" width="200 px" src="{{pi.party_logo.url}}">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{%endblock%}

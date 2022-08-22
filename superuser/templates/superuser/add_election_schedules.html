@@ -1,0 +1,69 @@
+{% extends "superuser/master.html" %}
+
+    {%block title%} User Login {%endblock%}
+
+    {%block body%}
+
+    
+    <style>
+        .main_div form {
+    padding: 15px 20px;
+    background-color: darkblue;
+    color: white;
+    border: 2px solid #ecf0f1;
+    outline: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px 2px black;
+}
+label{
+    color: white;
+}
+    </style>
+
+    <div class="main_div">
+        <div class="container">
+            <div class="row my-5">
+                <div class="col-md-7 my-5">
+                    <h1 style="color:darkblue;"><u>Schedule Elections</u></h1>
+                    <!-- <form method="POST" enctype="multipart/form-data">
+                        
+                        {% csrf_token %}
+                        <table class="table ">
+                            {# {{form.as_table}} #}
+                        </table>
+                        <button class="btn btn-warning" type="submit" value='Submit' > Add Schedule</button>
+                    </form> -->
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                          <label for="pincode">Pincode</label>
+                          <input type="number" class="form-control" id="pincode" name="pincode" placeholder="Enter Pincode">
+                        </div>
+                        <div class="form-group">
+                          <label for="date">Date</label>
+                          <input type="date" class="form-control" id="date" name="date" placeholder="Enter Election Date">
+                        </div>
+                        <div class="form-group">
+                            <label for="starttime">Start time</label>
+                            <input type="time" class="form-control" id="starttime" name="starttime" placeholder="Enter Start Time">
+                          </div>
+                          <div class="form-group">
+                            <label for="endtime">End time</label>
+                            <input type="time" class="form-control" id="endtime" name="endtime" placeholder="Enter End Time">
+                          </div>
+                        
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                      </form>
+                </div>
+                <div class="col-md-5 ">
+                    <img class="my-5 mx-2" height="400px" src="https://www.eces.eu/uploads/5ed90e76439b0.jpg">
+                </div>
+            </div>
+        </div>
+
+
+</div>
+
+    {%endblock%}

@@ -1,0 +1,137 @@
+{% extends "vote/index.html" %}
+
+{%block title%} User Signup {%endblock%}
+
+{%block body%}
+<style>
+    .cardArea {
+    padding: 30px;
+    background: rgb(0,255,21);
+background: linear-gradient(45deg, rgba(0,255,21,1) 0%, rgba(9,84,121,0) 50%, rgba(255,134,0,1) 100%);
+    border-radius: 15px;
+    border: 2px solid black;
+
+}
+@media print{
+    body{
+        -webkit-print-color-adjust:exact;
+    }
+}
+
+</style>
+
+{%if data.status == "Pending" %}
+
+<h1 class="text-center mt-5" style="color:darkblue"><b><u>Card Status</u></b></h1>
+
+<div class="container" style="margin-top:10%">
+    <div class="row">
+        <div class="col-md-4" style="background-color: Red;">
+            <h1 class="text-white"> Status : Pending ------></h1>
+        </div>
+        <div class="col-md-4">
+            <h1 class="text-warning">  Status : Progress</h1>
+        </div>
+        <div class="col-md-4">
+            <h1 class="text-success">  Status : Aproved</h1>
+        </div>
+    </div>
+
+</div>
+
+{%elif data.status == "Progress" %}
+<h1 class="text-center mt-5" style="color:darkblue"><b><u>Card Status</u></b></h1>
+
+<div class="container" style="margin-top:10%">
+    <div class="row">
+        <div class="col-md-4" >
+            <h1 class="text-warning"> Status : Pending</h1>
+        </div>
+        <div class="col-md-4" style="background-color: yellow;">
+            <h1>  Status : Progress -----></h1>
+        </div>
+        <div class="col-md-4">
+            <h1 class="text-success">  Status : Aproved</h1>
+        </div>
+    </div>
+
+</div>
+
+{%elif data.status == "Approved" %}
+
+
+<h1 class="text-center mt-5" style="color:darkblue"><b><u>Card Status : Approved</u></b></h1>
+<div class="main_div">
+    <div class="container my-5 ">
+        <div class="row text-center" style="    display:flex;
+        justify-content: center;">
+            <div class="col-md-6" style="display: grid;justify-content: center; width: 500px; ">
+                <div class="cardArea mr-0 ">
+                    <h1 class="text-center">Election Commition <br>Of India</h1>
+                <img class="center" src="{{data.image.url}}" alt="mypic" style="margin:auto;"class="card__img" height="150px" width="285px;" />
+                <table class="my-3">
+                    <tr>
+                        <td>Name :</td>
+                        <td>{{data.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email :</td>
+                        <td>{{data.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>Address :</td>
+                        <td>{{data.address}}</td>
+                    </tr>
+                    <tr>
+                        <td>Pincode :</td>
+                        <td>{{data.pincode}}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone :</td>
+                        <td>{{data.phone}}</td>
+                    </tr>
+
+                </table>
+            </div>
+
+            </div>
+        
+
+        <div class="col-md-6" style="display: grid;justify-content: center; width: 500px;">
+            <div class="cardArea ml-0">
+                <h1 class="text-center">Election Commition <br>Of India</h1>
+            
+            <table class="my-3">
+                <tr>
+                    <td>Voter ID</td>
+                    
+                </tr>
+                <!-- <tr>
+                   
+                    <td>{{data.voterid}}</td>
+                </tr> -->
+
+                <tr>
+                    
+                    <td><img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png" height="150px" width="150px"/></td>
+                   
+                </tr>
+                <tr>
+                    <td>The Election Commission of India is a constitutional body under the ownership of Ministry of Law and Justice, Government of India. It was established by the Constitution of India to conduct and regulate elections in the country.</td>
+                </tr>
+
+            </table>
+        </div>
+        </div>
+    </div>
+    <div style="display:flex; justify-content: center;">    
+        <button onclick="window.print()" class="btn btn-warning my-5">Print Out</button>
+    </div>
+
+</div>
+</div>
+</div>
+
+{%endif%}
+
+{%endblock%}

@@ -1,0 +1,29 @@
+{% extends 'vote/candidatedashboard.html' %}
+{% block title %} Delete Candidate{% endblock  %}
+{% block body %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="container-fluid">
+            <div class="row mt-5" style="display: flex; justify-content: center;">
+               
+                <div class="col-sm-3">
+                    <h1 class="text-center text-danger my-5"><u>Delete Candidate </u></h1>
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{candidate.image.url}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{candidate.name}}</h5>
+                            <h6>{{candidate.email}}<br>{{candidate.phone}}%</h6>
+                            <p>{{candidate.pincode}}</p>
+                            <input type='submit' class="btn btn-danger" value='Confirm Delete'>
+                           
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+
+    </form>
+
+{% endblock %}

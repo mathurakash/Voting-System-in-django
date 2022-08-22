@@ -1,0 +1,104 @@
+{% extends "vote/index.html"%}
+{%block title%} 
+{%if sub%}
+{{sub.name}}
+{% else %}
+  Homepage
+{% endif %}
+  {%endblock%}
+{%block body%}
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+
+</style>
+{{date}}
+{{starttime}}
+{{endtime}}
+{{now}}
+
+<script>
+    Date="{{date}}"
+    Time="{{starttime}}"
+   
+    Date.Format = 'dd.MM.uuuu HH:mm';
+    Time.Format = 'dd.MM.uuuu HH:mm';
+    myDatetime = Date + Time
+    console.log(myDatetime)
+</script>
+
+
+<div class="container my-5">
+    <h6>{{votingstatus}}</h6>
+  <div class="row my-5">
+      {% if votingstatus == "Enable" %}
+
+      <h1><u>Give Your Vote </u></h1>
+    <h3 class="text-danger">you are allowed to vote only once. So be carefull.....</h3>
+   
+    <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Party name</th>
+                <th>Party logo</th>
+                <th>Pincode</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in candidates %}
+            <tr>
+                <td>{{user.name}}</td>
+                <td><img src="{{user.image.url}}" height="150px" width="200px" alt="{{user.name}}"></td>
+                <td>{{user.party_name}}</td>
+                <td>{{user.pincode}}</td>
+                <td><img src="{{user.party_logo.url}}" height="150px" width="200px" alt="{{user.name}}"></td>
+                <td>
+                    <!-- <form>
+                        <input type="hidden" value="{{request.session.user_log.id}}" name="userid">
+                        <input type="hidden" value="{{user.id}}" name="candidateid">
+                            <button type="submit" class="btn btn-seccess">Vote</button>
+                    </form> -->
+                    <a href="/Vote_user/{{request.session.user_log.id}}/{{user.id}}/" class="btn btn-success">Vote</a>
+                
+                
+                </td>
+            </tr>
+            
+            {% endfor %}
+            
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Party name</th>
+                <th>Party logo</th>
+                <th>Pincode</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+    </table>
+    {%else%}
+    <h1 class="text-danger text-center mt-5">You already Voted Once</h1>
+    <h3 class="text-danger text-center">Thanks for your contribution.....</h3>
+    
+    {%endif%}
+  </div>
+</div>
+
+<!-- <script>
+$(document).ready(function() {
+    $('#example').DataTable();
+} );
+
+</script> -->
+
+{%endblock%}

@@ -1,0 +1,56 @@
+{% extends "superuser/home.html" %}
+
+{%block title%} User Signup {%endblock%}
+
+{%block body%}
+<style>
+    .main_div form {
+padding: 15px 20px;
+background-color: darkblue;
+color: white;
+border: 2px solid #ecf0f1;
+outline: none;
+border-radius: 5px;
+text-transform: uppercase;
+cursor: pointer;
+text-align: center;
+box-shadow: 2px 2px 2px 2px black;
+}
+label{
+color: white;
+}
+h1{
+    color:darkblue;
+}
+</style>
+
+<div class="main_div my-3">
+    <div class="container my-5">
+        <div class="row my-5">
+
+            <div class="col-md-7 my-5">
+                <h1 claSS="my-2" style="color:darkblue"><u>Register Candidate</u></h1>
+                <form method="POST" enctype="multipart/form-data" style="border:none;">
+                    <!-- csrf token -->
+                    {% csrf_token %}
+
+                    <table class="table ">
+                        {% if error %}
+                        {{error}}
+                        {% endif %}
+                        {{form.as_table}}
+                    </table>
+
+                    <!-- form submit button -->
+                    <button class="btn btn-warning" type="submit" value='Submit'>Candidate Signup</button>
+                </form>
+            </div>
+            <div class="col-md-5 my-5 ">
+                <img class="my-5 mx-2" height="400px" src="https://www.eces.eu/uploads/5ed90e76439b0.jpg">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{%endblock%}
